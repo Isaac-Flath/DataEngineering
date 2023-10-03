@@ -2,11 +2,38 @@
 # Sparkify ETL Pipeline and Database Design
 
 ## Table of Contents
-1. [Reason and Justification for the Database Schema Design](#reason-and-justification-for-the-database-schema-design)
-2. [Purpose of the Database in Context of Sparkify](#purpose-of-the-database-in-context-of-sparkify)
-3. [Example Queries for Song Play Analysis](#example-queries-for-song-play-analysis)
+1. [Usage Instructions](#usage-instructions)
+2. [Reason and Justification for the Database Schema Design](#reason-and-justification-for-the-database-schema-design)
+3. [Purpose of the Database in Context of Sparkify](#purpose-of-the-database-in-context-of-sparkify)
+4. [Example Queries for Song Play Analysis](#example-queries-for-song-play-analysis)
 
 ---
+
+## Usage Instructions
+
+> Note: This repository only stores code for running ELT pipeline and not infrastructure information.  For infrastructure definition see [this repository](https://github.com/Isaac-Flath/Infrastructure/tree/main/data-eng)
+
+### Running the Pipeline
+
+To run the full pipeline run the code below in terminal.
+
+> WARNING:  `create_tables.py` will drop and recreate tables, so data will be lost when that is run.
+
+```bash
+python create_tables.py
+python etl.py
+```
+### Repo Organization
+
++ `common.py`:  Stores functions needed for both parts of the pipeline (such as db connection and query runing functions)
++ `dwh.cfg`:  Stores configuration information such as data source location and database target location
++ `sql_queries.py`:  All sql queries used in the pipeline are defined here.  There are four general types of queries:
+    + Drop all tables 
+    + Create all tables
+    + Copy raw data from s3 to staging tables
+    + Insert data from staging tables to fact and dimension tables
++ `create_tables.py`:  Runs drop and create queries from `sql_queries.py` 
++ `etl.py`: Runs copy and insert queries from `sql_queries.py` 
 
 ## Reason and Justification for the Database Schema Design
 
