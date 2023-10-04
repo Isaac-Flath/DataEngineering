@@ -4,11 +4,7 @@
 Sparkify is a fast-growing music streaming startup focused on delivering an exceptional listening experience to its user base. As the company scales, data analytics become crucial for understanding user behavior and optimizing the service. This project aims to build an ETL pipeline that extracts raw data from Amazon S3, stages it in Redshift, and transforms it into a structured schema for efficient analytics. Ideal for software engineers, this documentation provides details on the database design, its purpose, and offers example queries for in-depth music streaming analysis.
 
 This project ingests raw data into redshift and then creates final tables in a star schema for analytics use.  Please reference the image below for the analytic tables to use analysis.
-
 ![ERD Diagram](erd.jpeg)
-
-
-
 ## Table of Contents
 1. [Usage Instructions](#usage-instructions)
 2. [Reason and Justification for the Database Schema Design](#reason-and-justification-for-the-database-schema-design)
