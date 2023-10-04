@@ -15,6 +15,14 @@ Sparkify is a fast-growing music streaming startup focused on delivering an exce
 
 > Note: This repository only stores code for running ELT pipeline and not infrastructure information.  For infrastructure definition see [this repository](https://github.com/Isaac-Flath/Infrastructure/tree/main/data-eng)
 
+### Dependencies
+
+This project runs using python 3 and requires the `psycopg2` and `credstash` libraries.  You can install these requirements with the following command.
+
+```bash
+pip install -r requirements.txt
+```
+
 ### Running the Pipeline
 
 To run the full pipeline run the code below in terminal.
@@ -25,6 +33,7 @@ To run the full pipeline run the code below in terminal.
 python create_tables.py
 python etl.py
 ```
+
 ### Repo Organization
 
 + `common.py`:  Stores functions needed for both parts of the pipeline (such as db connection and query runing functions)
