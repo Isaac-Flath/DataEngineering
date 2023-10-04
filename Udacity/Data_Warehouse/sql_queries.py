@@ -158,8 +158,8 @@ INSERT INTO songplays (
     location,
     user_agent
     )
-SELECT
-    distinct(e.ts) as start_time,
+SELECT distinct
+    e.ts as start_time,
     e.user_id,
     e.level,
     s.song_id,
@@ -183,13 +183,22 @@ INSERT INTO users (
     level
     )
 SELECT 
-    distinct(user_id),
+    user_id,
     first_name,
     last_name,
     gender,
     level
 FROM staging_events
 WHERE user_id is not null
+QUALIFY
+    row_number()
+            over
+                (
+                partition by
+                    USERID
+                order by
+                    ts desc
+                ) = 1
 """
 
 song_table_insert = """
