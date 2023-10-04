@@ -27,12 +27,18 @@ pip install -r requirements.txt
 
 To run the full pipeline run the code below in terminal.
 
-> WARNING:  `create_tables.py` will drop and recreate tables, so data will be lost when that is run.
+> WARNING:  `create_tables.py` will drop and recreate tables, so data will be lost when that is run.  To avoid data loss do nor run `create_tables.py` unless you plan on starting from scratch.
 
 ```bash
 python create_tables.py
 python etl.py
 ```
+
+### Error handling
+
+If you need to debug or change tables it is recommended to back up your tables first.  While redshift does snapshot tables, it is best not to rely on those.
+
+If `etl.py` fails to run due to the copy statements, the top 25 most recent failures will be saved to `load_errors.csv` for convenient debugging.  This is the part of the pipeline *most* likely to fail when in production as it will likely fail if there are any changes in input data.
 
 ### Repo Organization
 
