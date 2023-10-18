@@ -28,16 +28,16 @@ CustomerTrusted_node1697391466513 = glueContext.create_dynamic_frame.from_catalo
     transformation_ctx="CustomerTrusted_node1697391466513",
 )
 
-# Script generated for node AccelerometerLanding
-AccelerometerLanding_node1 = glueContext.create_dynamic_frame.from_catalog(
+# Script generated for node AccelerometerTrusted
+AccelerometerTrusted_node1 = glueContext.create_dynamic_frame.from_catalog(
     database="dend-project3",
-    table_name="accelerometer_landing",
-    transformation_ctx="AccelerometerLanding_node1",
+    table_name="accelerometer_trusted",
+    transformation_ctx="AccelerometerTrusted_node1",
 )
 
 # Script generated for node Customer Privacy Join
 CustomerPrivacyJoin_node1697391511547 = Join.apply(
-    frame1=AccelerometerLanding_node1,
+    frame1=AccelerometerTrusted_node1,
     frame2=CustomerTrusted_node1697391466513,
     keys1=["user"],
     keys2=["email"],
